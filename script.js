@@ -49,16 +49,16 @@ let gameRound = (playerSelection, computerSelection) => {
 
 function game() {
     for (i = 0; i < 5; i++) {
+        console.log(`${playerSelection} vs ${computerSelection}`);
+        console.log(gameRound(playerSelection, computerSelection));
         playerSelection = caseInsensitive(prompt('Rock, paper or scissors?'));
         computerSelection = computerPlay();
         gameRound(playerSelection, computerSelection);
-        console.log(`${playerSelection} vs ${computerSelection}`);
-        console.log(gameRound(playerSelection, computerSelection));
     }
     if(playerScore > computerScore) {
-        alert('Player victory!');
+        alert(`Player victory with ${playerScore} points against ${computerScore} points.`);
     } else if (computerScore > playerScore) {
-        alert('Computer victory!');
+        alert(`Computer victory with ${computerScore} points against ${playerScore} points.`);
     } else if (playerScore == computerScore) {
         game();
     }
