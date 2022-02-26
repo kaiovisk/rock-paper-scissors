@@ -13,12 +13,6 @@ function caseInsensitive(txt){
     return txt;
 }
 
-let playerSelection = caseInsensitive(prompt('Rock, paper or scissors?'));
-let computerSelection = computerPlay();
-
-let playerScore = 0;
-let computerScore = 0;
-
 let gameRound = (playerSelection, computerSelection) => {
     if (playerSelection == opitions[0] && computerSelection == opitions[0]) {
         return "Draw!"
@@ -47,13 +41,20 @@ let gameRound = (playerSelection, computerSelection) => {
     }
 }
 
+let playerScore = 0;
+let computerScore = 0;
+let playerSelection;
+let computerSelection;
+
 function game() {
     for (i = 0; i < 5; i++) {
-        console.log(`${playerSelection} vs ${computerSelection}`);
-        console.log(gameRound(playerSelection, computerSelection));
-        playerSelection = caseInsensitive(prompt('Rock, paper or scissors?'));
-        computerSelection = computerPlay();
-        gameRound(playerSelection, computerSelection);
+        if (!playerSelection === String || playerSelection != opitions) {
+            playerSelection = caseInsensitive(prompt('Rock, paper or scissors?'));
+            computerSelection = computerPlay();
+            console.log(`${playerSelection} vs ${computerSelection}`);
+            console.log(gameRound(playerSelection, computerSelection));
+            gameRound(playerSelection, computerSelection);
+        }
     }
     if(playerScore > computerScore) {
         alert(`Player victory with ${playerScore} points against ${computerScore} points.`);
